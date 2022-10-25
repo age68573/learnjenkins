@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-       Tag = "0.1.6"
+       Tag = "0.1.8"
     }
     stages {
         
