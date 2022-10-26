@@ -15,6 +15,18 @@ pipeline {
                 
             }
         }
+        stage('sonar scan') {
+            steps {
+                script {
+                    // 引入sonarQubeScanner 工具
+                    scannerHome= tool 'sonarqube-scanner'
+                }
+                // 引入 sonarQube server 的環境 在 manage configure  SonarQube servers
+                withSonarQubeEnv('sonarqube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
         stage('npm stage') {
             steps {
                 sh 'node -v'
