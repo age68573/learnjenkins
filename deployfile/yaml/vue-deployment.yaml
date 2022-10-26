@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment      
+metadata:
+  name: vue-deployment
+  namespace: dev
+spec: 
+  replicas: 4
+  selector:
+    matchLabels:
+      app: vue-pod
+  template:
+    metadata:
+      labels:
+        app: vue-pod
+    spec:
+      containers:
+      - name: xxx
+        image: lab.harbor.com/library/vue:latest
+        imagePullPolicy: Always

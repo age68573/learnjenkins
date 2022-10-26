@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment      
+metadata:
+  name: vue-deployment
+  namespace: {{.Values.namespace}}
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{.Values.labels}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.labels}}
+    spec:
+      containers:
+      - name: xxx
+        image: {{.Values.image.repository}}:{{.Values.image.tag}}
+        imagePullPolicy: Always
