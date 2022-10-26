@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-       Tag = "0.2.1"
+       Tag = "0.2.2"
     }
     stages {
         
@@ -32,24 +32,6 @@ pipeline {
                     sh 'docker push lab.harbor.com/library/vue:${Tag}'
                 }
                 sh 'docker system prune --force --all'
-            }
-        }
-        stage('deploy on k8s') {
-            steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'k8s-master', transfers: [sshTransfer(
-                    cleanRemote: false, 
-                    excludes: '', 
-                    // execCommand: 'kubectl apply -f /root/vue/vue-deployment.yaml',
-                    execCommand: "kubectl set image deployment/vue-deployment -n dev xxx=lab.harbor.com/library/vue:${Tag}",
-                    execTimeout: 120000, 
-                    flatten: false, 
-                    makeEmptyDirs: false, 
-                    noDefaultExcludes: false, 
-                    patternSeparator: '[, ]+', 
-                    remoteDirectory: '', 
-                    remoteDirectorySDF: false, 
-                    removePrefix: '', 
-                    sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     }
