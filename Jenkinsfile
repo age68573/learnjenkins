@@ -24,6 +24,7 @@ pipeline {
                 // 引入 sonarQube server 的環境 在 manage configure  SonarQube servers
                 withSonarQubeEnv('sonarqube') {
                     sh "${scannerHome}/bin/sonar-scanner"
+                    sh "${scannerHome} -Dsonar.projectKey=develop"
                 }
             }
         }
