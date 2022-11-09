@@ -8,7 +8,7 @@ image:
   repository: lab.harbor.com/library/vue
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.2.6"
+  tag: "0.2.7"
 labels: vue-pod
 imagePullSecrets: []
 nameOverride: ""
