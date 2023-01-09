@@ -9,7 +9,7 @@ image:
   repository: age68573/tekton_test
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.3.3"
+  tag: "0.3.4"
 labels: vue-pod
 imagePullSecrets: []
 nameOverride: ""
