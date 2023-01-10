@@ -5,8 +5,8 @@
 replicaCount: 3
 namespace: "dev"
 image:
-        #repository: lab.harbor.com/library/vue
-  repository: age68573/tekton_test
+  repository: lab.harbor.com/library/vue
+        #repository: age68573/tekton_test
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.3.1"
